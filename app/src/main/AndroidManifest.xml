@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.netne.droidfx.droidfxsmartticket" >
+
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <permission android:name="com.inducesmile.androidcontentprovider.PAYMENT_PROVIDER_PERMISSION" android:protectionLevel="normal" />
+
+    <application
+        android:allowBackup="true"
+
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/MyMaterialTheme" >
+
+        <activity
+            android:name=".startPage"
+            android:label="@string/smart"
+            android:theme="@style/MyMaterialTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter"
+                />
+        </activity>
+        <service
+            android:name=".OdometerService"
+            android:enabled="true"
+            android:exported="false"></service>
+
+        <activity
+            android:name=".SignOn"
+            android:label="@string/smart" >
+        </activity>
+        <activity
+            android:name=".Web"
+            android:label="@string/smart" >
+        </activity>
+
+        <activity
+            android:name=".Tools"
+            android:label="Tools" >
+        </activity>
+
+        <activity
+            android:name=".SignOut"
+            android:label="@string/write" >
+
+        </activity>
+
+
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/read">
+
+
+        </activity>
+
+        <activity
+
+            android:name=".OFBS"
+            android:label="@string/read" >
+
+        </activity>
+
+        <activity
+
+            android:name=".AnotherActivity"
+            android:label="@string/read" >
+
+        </activity>
+
+        <activity
+            android:name=".OB"
+            android:noHistory="true"
+            android:label="@string/read" >
+
+        </activity>
+
+
+        <receiver android:name=".NetworkStateChecker">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
